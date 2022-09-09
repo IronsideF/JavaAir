@@ -15,5 +15,6 @@ public class PlaneTest {
         assertEquals(PlaneType.CESSNA172R, myPlane.getPlaneType());
         assertEquals(3, myPlane.getCapacity());
         assertEquals(1.225, myPlane.getTotalWeight(), 0.0);
+        assertEquals(0, myPlane.getRequiredCrew());
     }
 }

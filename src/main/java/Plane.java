@@ -14,4 +14,7 @@ public class Plane {
     public double getTotalWeight(){
         return planeType.getTotalWeight();
     }
+    public int getRequiredCrew(){
+        return planeType.getCrew();
+    }
 }
