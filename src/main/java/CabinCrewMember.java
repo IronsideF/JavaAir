@@ -1,17 +1,5 @@
-public class CabinCrewMember {
-    private String name;
-    private Rank rank;
-
+public class CabinCrewMember extends Staff {
     public CabinCrewMember(String name, Rank rank) {
-        this.name = name;
-        this.rank = rank;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Rank getRank() {
-        return rank;
+        super(name, rank);
     }
 }
