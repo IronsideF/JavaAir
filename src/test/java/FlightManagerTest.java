@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
-public class FlightTest {
+public class FlightManagerTest {
     Flight myFlight;
     Pilot myPilot;
     CabinCrewMember firstCabCrew;
@@ -19,8 +19,6 @@ public class FlightTest {
     CabinCrewMember eighthCabCrew;
     Plane myPlane;
     Passenger myPassenger;
-
-
     @Before
     public void before(){
         myPilot = new Pilot("Kim", Rank.CAPTAIN, "ROSD1261");
@@ -46,27 +44,17 @@ public class FlightTest {
         myPassenger = new Passenger("Keith", 2);
     }
     @Test
-    public void hasProperties(){
-        assertEquals(myPilot, myFlight.getPilot());
-        assertEquals(8, myFlight.getCrewCount());
-        assertEquals(myPlane, myFlight.getPlane());
-        assertEquals("WF515", myFlight.getFlightNumber());
-        assertEquals("ABQ", myFlight.getDestination());
-        assertEquals("PHX", myFlight.getDepartureAirport());
-        assertEquals("8:00", myFlight.getDepartureTime());
+    public void canGetWeightAllowancePerPassenger(){
+        assertEquals(0.43, FlightManager.getWeightPerPassenger(myFlight), 0.001);
     }
     @Test
-    public void canGetAvailableSeats(){
-        assertEquals(325, myFlight.getAvailableSeats());
-    }
-    @Test
-    public void canBookPassengers(){
+    public void canGetTotalBookedWeight(){
         myFlight.bookPassenger(myPassenger);
-        assertEquals(1, myFlight.getPassengerCount());
+        assertEquals(0.2, FlightManager.getTotalBookedWeight(myFlight), 0.001);
     }
     @Test
-    public void availableSeatsUpdates(){
+    public void canGetRemainingWeight(){
         myFlight.bookPassenger(myPassenger);
-        assertEquals(324, myFlight.getAvailableSeats());
+        assertEquals(139.8, FlightManager.getRemainingWeight(myFlight), 0.0);
     }
 }

@@ -28,8 +28,12 @@ public class Flight {
     public int getCrewCount(){
         return crewMembers.size();
     }
-    public int getPassegerCount(){
+    public int getPassengerCount(){
         return passengers.size();
+    }
+
+    public ArrayList<Passenger> getPassengers() {
+        return passengers;
     }
 
     public Plane getPlane() {
@@ -52,7 +56,7 @@ public class Flight {
         return departureTime;
     }
     public int getAvailableSeats(){
-        return plane.getCapacity() - getPassegerCount();
+        return plane.getCapacity() - getPassengerCount();
     }
     public void bookPassenger(Passenger passenger){
         this.passengers.add(passenger);
