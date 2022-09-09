@@ -14,4 +14,8 @@ public class PilotTest {
     public void hasProperties(){
         assertEquals("FV77008", myPilot.getLicenseNumber());
     }
+    @Test
+    public void canFlyPlane(){
+        assertEquals("We have liftoff everyone", myPilot.flyPlane());
+    }
 }

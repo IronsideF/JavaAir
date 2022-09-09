@@ -15,4 +15,8 @@ public class CabinCrewMemberTest {
         assertEquals("Ben", myCabinCrew.getName());
         assertEquals(Rank.FIRST_OFFICER, myCabinCrew.getRank());
     }
+    @Test
+    public void canRelayMessage(){
+        assertEquals("The pilot has turned on the fasten seatbelts sign, please ensure your seatbelt is securely fastened", myCabinCrew.fastenBeltsMessage());
+    }
 }

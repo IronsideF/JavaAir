@@ -18,6 +18,7 @@ public class FlightTest {
     CabinCrewMember seventhCabCrew;
     CabinCrewMember eighthCabCrew;
     Plane myPlane;
+    Passenger myPassenger;
 
 
     @Before
@@ -42,6 +43,7 @@ public class FlightTest {
                 eighthCabCrew));
         myPlane = new Plane(PlaneType.AIRBUSA350);
         myFlight = new Flight(myPilot, testCrew, myPlane, "WF515", "ABQ", "PHX", "8:00");
+        myPassenger = new Passenger("Keith", 2);
     }
     @Test
     public void hasProperties(){
@@ -52,5 +54,19 @@ public class FlightTest {
         assertEquals("ABQ", myFlight.getDestination());
         assertEquals("PHX", myFlight.getDepartureAirport());
         assertEquals("8:00", myFlight.getDepartureTime());
+    }
+    @Test
+    public void canGetAvailableSeats(){
+        assertEquals(325, myFlight.getAvailableSeats());
+    }
+    @Test
+    public void canBookPassengers(){
+        myFlight.bookPassenger(myPassenger);
+        assertEquals(1, myFlight.getPassegerCount());
+    }
+    @Test
+    public void availableSeatsUpdates(){
+        myFlight.bookPassenger(myPassenger);
+        assertEquals(324, myFlight.getAvailableSeats());
     }
 }
