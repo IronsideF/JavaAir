@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 
@@ -40,7 +41,7 @@ public class FlightManagerTest {
                 seventhCabCrew,
                 eighthCabCrew));
         myPlane = new Plane(PlaneType.AIRBUSA350);
-        myFlight = new Flight(myPilot, testCrew, myPlane, "WF515", "ABQ", "PHX", "8:00");
+        myFlight = new Flight(myPilot, testCrew, myPlane, "WF515", "ABQ", "PHX", new Date(1662805894378L));
         myPassenger = new Passenger("Keith", 2);
     }
     @Test
