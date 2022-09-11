@@ -12,6 +12,7 @@ public class Flight {
     private String destination;
     private String departureAirport;
     private Date departureTime;
+    private ArrayList<Integer> seatNumbers;
 
     public Flight(Pilot pilot, ArrayList<CabinCrewMember> crewMembers, Plane plane, String flightNumber, String destination, String departureAirport, Date departureTime) {
         this.pilot = pilot;
@@ -22,6 +23,7 @@ public class Flight {
         this.destination = destination;
         this.departureAirport = departureAirport;
         this.departureTime = departureTime;
+        this.seatNumbers = buildSeatNumbers();
     }
 
     public Pilot getPilot() {
@@ -61,9 +63,18 @@ public class Flight {
     public int getAvailableSeats(){
         return plane.getCapacity() - getPassengerCount();
     }
-    public int generateSeatNumber(){
+    private ArrayList<Integer> buildSeatNumbers(){
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 1; i<=plane.getCapacity(); i++){
+            result.add(i);
+        }
+        return result;
+    }
+    private int generateSeatNumber(){
         Random rand = new Random();
-        return rand.nextInt(plane.getCapacity())+1;
+        System.out.println(seatNumbers.size());
+        int seatIndex = rand.nextInt(seatNumbers.size());
+        return seatNumbers.remove(seatIndex);
     }
     public void bookPassenger(Passenger passenger){
         this.passengers.add(passenger);

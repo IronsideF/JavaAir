@@ -20,6 +20,8 @@ public class FlightTest {
     CabinCrewMember eighthCabCrew;
     Plane myPlane;
     Passenger myPassenger;
+    Passenger slyPassenger;
+    Passenger flyPassenger;
 
 
     @Before
@@ -45,6 +47,8 @@ public class FlightTest {
         myPlane = new Plane(PlaneType.AIRBUSA350);
         myFlight = new Flight(myPilot, testCrew, myPlane, "WF515", "ABQ", "PHX",new Date(1662805894378L));
         myPassenger = new Passenger("Keith", 2);
+        slyPassenger = new Passenger("Mar", 1);
+        flyPassenger = new Passenger("James", 0);
     }
     @Test
     public void hasProperties(){
@@ -79,6 +83,16 @@ public class FlightTest {
     public void bookingPassengerAddsSeatNumber(){
         myFlight.bookPassenger(myPassenger);
         assertNotEquals(0, myPassenger.getSeatNumber());
+    }
+    @Test
+    public void willNotDoubleBookSeats(){
+        Flight smallFlight = new Flight(myPilot, new ArrayList<>(), new Plane(PlaneType.CESSNA172R), "7", "EDI", "GLA", new Date());
+        smallFlight.bookPassenger(myPassenger);
+        smallFlight.bookPassenger(slyPassenger);
+        smallFlight.bookPassenger(flyPassenger);
+        assertNotEquals(myPassenger.getSeatNumber(), slyPassenger.getSeatNumber());
+        assertNotEquals(myPassenger.getSeatNumber(), flyPassenger.getSeatNumber());
+        assertNotEquals(slyPassenger.getSeatNumber(), flyPassenger.getSeatNumber());
     }
 
 }
