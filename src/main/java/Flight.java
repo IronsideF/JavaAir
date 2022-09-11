@@ -61,5 +61,6 @@ public class Flight {
     }
     public void bookPassenger(Passenger passenger){
         this.passengers.add(passenger);
+        passenger.setFlight(this);
     }
 }

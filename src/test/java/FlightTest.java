@@ -70,4 +70,9 @@ public class FlightTest {
         myFlight.bookPassenger(myPassenger);
         assertEquals(324, myFlight.getAvailableSeats());
     }
+    @Test
+    public void bookingPassengerAddsFlight(){
+        myFlight.bookPassenger(myPassenger);
+        assertEquals(myFlight, myPassenger.getFlight());
+    }
 }
