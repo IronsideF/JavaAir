@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class FlightTest {
     Flight myFlight;
@@ -75,4 +75,10 @@ public class FlightTest {
         myFlight.bookPassenger(myPassenger);
         assertEquals(myFlight, myPassenger.getFlight());
     }
+    @Test
+    public void bookingPassengerAddsSeatNumber(){
+        myFlight.bookPassenger(myPassenger);
+        assertNotEquals(0, myPassenger.getSeatNumber());
+    }
+
 }

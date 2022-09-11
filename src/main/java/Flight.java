@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.IntStream;
+import java.util.Random;
 
 public class Flight {
     private Pilot pilot;
@@ -59,8 +61,13 @@ public class Flight {
     public int getAvailableSeats(){
         return plane.getCapacity() - getPassengerCount();
     }
+    public int generateSeatNumber(){
+        Random rand = new Random();
+        return rand.nextInt(plane.getCapacity())+1;
+    }
     public void bookPassenger(Passenger passenger){
         this.passengers.add(passenger);
         passenger.setFlight(this);
+        passenger.setSeatNumber(generateSeatNumber());
     }
 }
